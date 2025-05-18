@@ -1,0 +1,12 @@
+@startuml
+package "User Management" {
+  class User
+  class Admin
+  User <|-- Admin
+}
+
+package "Product Management" {
+  class Product
+  class Order
+}
+@enduml

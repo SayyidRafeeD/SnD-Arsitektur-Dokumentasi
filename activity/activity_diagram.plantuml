@@ -1,0 +1,13 @@
+@startuml
+|User|
+start
+:Login;
+|System|
+:Validate Credentials;
+if (Valid?) then (yes)
+  :Show Dashboard;
+else (no)
+  :Show Error Message;
+endif
+stop
+@enduml

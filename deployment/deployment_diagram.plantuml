@@ -1,0 +1,11 @@
+@startuml
+node "Web Server" {
+  component "Web Application" as WA
+}
+
+node "Database Server" {
+  component "MySQL Database" as DB
+}
+
+WA -[#0000FF]-> DB : Uses
+@enduml

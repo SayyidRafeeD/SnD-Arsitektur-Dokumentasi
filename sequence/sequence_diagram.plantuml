@@ -1,0 +1,10 @@
+@startuml
+actor User
+participant System
+participant Database
+
+User -> System: Request Login
+System -> Database: Validate Credentials
+Database --> System: Return Result
+System -> User: Login Success
+@enduml
