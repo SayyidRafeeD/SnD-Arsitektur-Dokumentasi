@@ -1,11 +1,19 @@
 @startuml
-node "Web Server" {
-  component "Web Application" as WA
+cloud "Cloud Provider" {
+  node "Web Server" {
+    component "App Server"
+  }
+  node "Database Server" {
+    component "SQL Database"
+  }
 }
 
-node "Database Server" {
-  component "MySQL Database" as DB
+cloud "Client Network" {
+  node "Client Device" {
+    component "Mobile App"
+  }
 }
 
-WA -[#0000FF]-> DB : Uses
+"Client Device" --> "App Server" : Sends Requests
+"App Server" --> "SQL Database" : Fetches Data
 @enduml
