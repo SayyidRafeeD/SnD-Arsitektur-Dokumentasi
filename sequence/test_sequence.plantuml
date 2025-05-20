@@ -7,7 +7,7 @@ System -> System: Verifikasi Username dan Password
 alt Valid
     System -> User: Login Sukses (Halaman Dashboard)
 else Invalid
-    System -> User: Pesan Error (Username atau Password Salah)
+    System -> User: Paesan Error (Username atau Password Salah)
 end
 
 @enduml
