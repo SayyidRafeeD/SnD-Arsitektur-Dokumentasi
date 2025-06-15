@@ -5,31 +5,31 @@
 
 // --- DEFINISI TIPE DATA (STRUCT) ---
 
-// Struct untuk menyimpan data penumpang
+// Data penumpang
 struct Penumpang {
     char nama[50];
     char ktp[20];
 };
 
-// Struct untuk merepresentasikan node dalam linked list penumpang
+// Node dalam linked list penumpang
 struct NodePenumpang {
     struct Penumpang data;
     struct NodePenumpang* next;
 };
 
-// Struct untuk node dalam antrian daftar tunggu (Queue)
+// Node dalam antrian daftar tunggu (Queue)
 struct NodeAntrian {
     struct Penumpang data;
     struct NodeAntrian* next;
 };
 
-// Struct untuk Queue yang akan mengelola daftar tunggu
+// Queue untuk mengelola daftar tunggu
 struct Queue {
     struct NodeAntrian *front, *rear;
     int count; // Menghitung jumlah penumpang dalam antrian
 };
 
-// Struct untuk merepresentasikan gerbong dengan layout kursi 2D
+// Gerbong dengan layout kursi 2D
 struct Gerbong {
     // Layout kursi 10 baris x 4 kolom (A,B,C,D)
     // 0 = kosong, 1 = terisi
@@ -37,13 +37,13 @@ struct Gerbong {
     int kapasitas; // Melacak jumlah kursi yang sudah terisi
 };
 
-// Struct untuk merepresentasikan node stasiun (Vertex dalam Graph)
+// Node stasiun (Vertex dalam Graph)
 struct NodeStasiun {
     char nama[50];
     struct NodeStasiun* next;
 };
 
-// Struct untuk merepresentasikan node jadwal (Multi Linked List)
+// Node jadwal (Multi Linked List)
 struct NodeJadwal {
     char namaKereta[50];
     struct NodeStasiun* stasiunAsal;
@@ -55,7 +55,7 @@ struct NodeJadwal {
     struct NodeJadwal* next;
 };
 
-// Struct untuk node Binary Search Tree (BST) untuk pencarian tiket
+// Node BST untuk pencarian tiket
 struct NodeBST {
     char kodeBooking[10];
     struct Penumpang dataPenumpang;
@@ -85,9 +85,9 @@ struct NodeBST* cariTiketDiBST(struct NodeBST* root, char* kode);
 struct NodeBST* hapusTiketDariBST(struct NodeBST* root, char* kode);
 
 
-// --- FUNGSI MANIPULASI STASIUN & JADWAL ---
+// --- MANIPULASI STASIUN & JADWAL ---
 
-// Fungsi untuk membuat node stasiun baru
+// Membuat node stasiun baru
 struct NodeStasiun* buatStasiun(char* nama) {
     struct NodeStasiun* stasiunBaru = (struct NodeStasiun*)malloc(sizeof(struct NodeStasiun));
     strcpy(stasiunBaru->nama, nama);
@@ -95,7 +95,7 @@ struct NodeStasiun* buatStasiun(char* nama) {
     return stasiunBaru;
 }
 
-// Fungsi untuk menambahkan stasiun ke dalam linked list stasiun
+// Menambahkan stasiun ke dalam linked list stasiun
 void tambahStasiun(char* nama) {
     struct NodeStasiun* stasiunBaru = buatStasiun(nama);
     if (headStasiun == NULL) {
@@ -109,7 +109,7 @@ void tambahStasiun(char* nama) {
     }
 }
 
-// Fungsi untuk mencari stasiun berdasarkan nama
+// Mencari stasiun berdasarkan nama
 struct NodeStasiun* cariStasiun(char* nama) {
     struct NodeStasiun* temp = headStasiun;
     while (temp != NULL) {
@@ -121,7 +121,7 @@ struct NodeStasiun* cariStasiun(char* nama) {
     return NULL; // Return NULL jika tidak ditemukan
 }
 
-// Fungsi untuk inisialisasi queue
+// Inisialisasi queue
 void initQueue(struct Queue *q) {
     q->front = q->rear = NULL;
     q->count = 0;
@@ -158,7 +158,7 @@ struct NodeJadwal* buatJadwal(char* namaKereta, char* asal, char* tujuan, char* 
     return jadwalBaru;
 }
 
-// Fungsi untuk menambahkan jadwal ke dalam linked list jadwal
+// Menambahkan jadwal ke dalam linked list jadwal
 void tambahJadwal(char* namaKereta, char* asal, char* tujuan, char* waktu) {
     struct NodeJadwal* jadwalBaru = buatJadwal(namaKereta, asal, tujuan, waktu);
     if (jadwalBaru == NULL) return;
@@ -174,7 +174,7 @@ void tambahJadwal(char* namaKereta, char* asal, char* tujuan, char* waktu) {
     }
 }
 
-// --- FUNGSI-FUNGSI UNTUK QUEUE (DAFTAR TUNGGU) ---
+// --- QUEUE (DAFTAR TUNGGU) ---
 
 // Cek apakah antrian kosong
 int isAntrianKosong(struct Queue *q) {
@@ -220,7 +220,7 @@ struct Penumpang dequeueAntrian(struct Queue *q) {
     return dataDikeluarkan;
 }
 
-// --- FUNGSI-FUNGSI PEMBATALAN TIKET & MANIPULASI DATA ---
+// --- PEMBATALAN TIKET & MANIPULASI DATA ---
 
 // Generate kode booking random unik
 void generateKodeBooking(char* kode, int length) {
@@ -251,7 +251,7 @@ int hapusPenumpangDariJadwal(struct NodeJadwal* jadwal, const char* ktp) {
         temp = temp->next;
     }
 
-    if (temp == NULL) return 0; // Tidak ditemukan
+    if (temp == NULL) return 0; 
 
     prev->next = temp->next;
     free(temp);
@@ -653,8 +653,6 @@ int main() {
         }
     }
     
-    // Di aplikasi nyata, perlu ada fungsi untuk membebaskan semua memori
-    // yang dialokasikan (free memory) sebelum keluar.
     return 0;
 }
 
