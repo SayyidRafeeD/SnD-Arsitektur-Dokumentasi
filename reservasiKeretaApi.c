@@ -127,7 +127,7 @@ void initQueue(struct Queue *q) {
     q->count = 0;
 }
 
-// Fungsi untuk membuat jadwal kereta baru
+// Membuat jadwal kereta baru
 struct NodeJadwal* buatJadwal(char* namaKereta, char* asal, char* tujuan, char* waktu) {
     struct NodeJadwal* jadwalBaru = (struct NodeJadwal*)malloc(sizeof(struct NodeJadwal));
     
@@ -266,7 +266,7 @@ struct NodeBST* findMin(struct NodeBST* root) {
     return root;
 }
 
-// Fungsi untuk menghapus tiket dari BST (rekursif)
+// Menghapus tiket dari BST (rekursif)
 struct NodeBST* hapusTiketDariBST(struct NodeBST* root, char* kode) {
     if (root == NULL) return root;
 
@@ -350,7 +350,7 @@ void tampilkanKursi(struct NodeJadwal* jadwal) {
     printf("Keterangan: O = Kosong, X = Terisi\n\n");
 }
 
-// Fungsi untuk menu pemesanan tiket
+// Menu pemesanan tiket
 void menuPesanTiket() {
     int pilihanJadwal, baris, kolom;
     char kolomChar;
@@ -451,7 +451,7 @@ void menuPesanTiket() {
     printf("--------------------------\n\n");
 }
 
-// Fungsi untuk menambahkan tiket ke BST (rekursif)
+// Menambahkan tiket ke BST (rekursif)
 struct NodeBST* insertTiket(struct NodeBST* root, struct NodeBST* nodeBaru) {
     if (root == NULL) return nodeBaru;
     // Bandingkan kode booking untuk menentukan posisi
@@ -463,7 +463,7 @@ struct NodeBST* insertTiket(struct NodeBST* root, struct NodeBST* nodeBaru) {
     return root;
 }
 
-// Fungsi untuk mencari tiket di BST (rekursif)
+// Mencari tiket di BST (rekursif)
 struct NodeBST* cariTiketDiBST(struct NodeBST* root, char* kode) {
     if (root == NULL || strcmp(root->kodeBooking, kode) == 0) {
         return root;
@@ -474,7 +474,7 @@ struct NodeBST* cariTiketDiBST(struct NodeBST* root, char* kode) {
     return cariTiketDiBST(root->kanan, kode);
 }
 
-// Fungsi untuk menu pengecekan kode booking
+// Menu pengecekan kode booking
 void menuCekBooking() {
     char kode[10];
     printf("\n--- FITUR CEK BOOKING ---\n");
@@ -497,7 +497,7 @@ void menuCekBooking() {
     }
 }
 
-// Fungsi untuk menu pembatalan tiket
+// Menu pembatalan tiket
 void menuBatalTiket() {
     char kode[10];
     printf("\n--- FITUR PEMBATALAN TIKET ---\n");
@@ -566,7 +566,7 @@ void menuBatalTiket() {
     }
 }
 
-// Fungsi untuk melihat isi daftar tunggu
+// Melihat isi daftar tunggu
 void menuLihatDaftarTunggu() {
     tampilkanSemuaJadwal();
     int pilihanJadwal;
@@ -602,7 +602,6 @@ void menuLihatDaftarTunggu() {
     printf("----------------------------------\n\n");
 }
 
-// Fungsi utama program
 int main() {
     srand(time(NULL)); // Inisialisasi seed untuk angka random
     inisialisasiDataAwal();
