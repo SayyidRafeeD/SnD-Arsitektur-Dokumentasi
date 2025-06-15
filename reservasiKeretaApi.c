@@ -45,7 +45,7 @@ struct NodeJadwal {
 struct NodeBST {
     char kodeBooking[10];
     struct Penumpang dataPenumpang;
-    // Kita tidak bisa menyimpan detail rute/kursi di sini karena akan redundan
+    // detail rute/kursi di sini karena akan redundan
     // Data di sini adalah untuk verifikasi cepat
     struct NodeBST *kiri;
     struct NodeBST *kanan;
@@ -142,7 +142,7 @@ void tambahJadwal(char* namaKereta, char* asal, char* tujuan, char* waktu) {
     }
 }
 
-// Fungsi untuk generate kode booking random
+// Generate kode booking random
 void generateKodeBooking(char* kode, int length) {
     const char charset[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     for (int i = 0; i < length; i++) {
@@ -153,7 +153,7 @@ void generateKodeBooking(char* kode, int length) {
 }
 
 
-// --- FUNGSI TAMPILAN & MENU ---
+// --- TAMPILAN & MENU ---
 
 void tampilkanSemuaJadwal() {
     struct NodeJadwal* temp = headJadwal;
@@ -184,9 +184,9 @@ void tampilkanKursi(struct NodeJadwal* jadwal) {
         printf("%-2d", i + 1);
         for (int j = 0; j < 4; j++) {
             if (jadwal->gerbong.kursi[i][j] == 0) {
-                printf("O "); // O untuk kosong (Available)
+                printf("O "); // O = kosong (Available)
             } else {
-                printf("X "); // X untuk terisi (Occupied)
+                printf("X "); // X = terisi (Occupied)
             }
         }
         printf("\n");
@@ -272,7 +272,7 @@ struct NodeBST* insertTiket(struct NodeBST* root, struct NodeBST* nodeBaru) {
     return root;
 }
 
-// Fungsi untuk mencari tiket di BST (rekursif)
+// Mencari tiket di BST (rekursif)
 struct NodeBST* cariTiketDiBST(struct NodeBST* root, char* kode) {
     // Base case: root adalah NULL atau kode ditemukan di root
     if (root == NULL || strcmp(root->kodeBooking, kode) == 0) {
@@ -307,9 +307,6 @@ void menuCekBooking() {
         printf("\nKode Booking '%s' tidak ditemukan atau tidak valid.\n\n", kode);
     }
 }
-
-
-// --- FUNGSI UTAMA & INISIALISASI ---
 
 int main() {
     srand(time(NULL));
